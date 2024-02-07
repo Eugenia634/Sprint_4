@@ -26,11 +26,12 @@ public class AboutRentOrderFlow {
     // локатор для кнопки Да
     private final By orderButtonYes = By.xpath(".//button[(@class ='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да')]");
     //Локатор модального окна
-    private final By modalOrderWindow = By.xpath(".//div[contains(@class, 'Order_ModalHeader')]");
+    private final By modalOrderWindow = By.className("Order_ModalHeader__3FDaJ");
+
 
     //Модальное окно Заказ Оформлен
-    public boolean isModalOrderWindowDisplayed() {
-        return driver.findElement(modalOrderWindow).isDisplayed();
+    public String isModalOrderWindowDisplayed() {
+        return driver.findElement(modalOrderWindow).getText();
     }
 
     public AboutRentOrderFlow(WebDriver driver) {

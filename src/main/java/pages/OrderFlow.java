@@ -14,14 +14,11 @@ public class OrderFlow {
     private final By upperOrderButton = By.className("Button_Button__ra12g");
     //вторая кнопка Заказать ниже
     private final By belowOrderButton = By.className("Home_FinishButton__1_cWm");
+    // появление формы заказа
+    private final By orderForm = By.className("Order_Header__BZXOb");
 
     public OrderFlow(WebDriver driver) {
         OrderFlow.driver = driver;
-    }
-
-    // метод проверяет, активна ли кнопка Заказать
-    public boolean checkButton() {
-        return driver.findElement(upperOrderButton).isEnabled();
     }
 
     // Кликнуть по кнопке куки
@@ -37,5 +34,9 @@ public class OrderFlow {
     // Кликнуть по кнопке по нижней кнопке Заказать
     public void clickBelowOrderButton() {
         driver.findElement(belowOrderButton).click();
+    }
+   // метод проверяет есть ли форма заказа
+    public String orderFormCheck() {
+        return driver.findElement(orderForm).getText();
     }
 }

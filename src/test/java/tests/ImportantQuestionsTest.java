@@ -10,12 +10,12 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class ImportantQuestionsTest extends DriverForTest{
-    private final int quetionsIndex;
+    private final int questionsIndex;
     private final String textAnswer;
     private final int answerIndex;
 
-    public ImportantQuestionsTest(int quetions, int answer,  String text) {
-        this.quetionsIndex = quetions;
+    public ImportantQuestionsTest(int questions, int answer,  String text) {
+        this.questionsIndex = questions;
         this.answerIndex = answer;
         this.textAnswer = text;
     }
@@ -40,7 +40,7 @@ public class ImportantQuestionsTest extends DriverForTest{
 
         ImportantQuestions objMainList = new ImportantQuestions(driver);
         objMainList.scrollPageToEndOfList();
-        objMainList.clickQuestionButton(quetionsIndex);
+        objMainList.clickQuestionButton(questionsIndex);
 
         assertEquals(textAnswer,ImportantQuestions.getText(answerIndex));
     }
