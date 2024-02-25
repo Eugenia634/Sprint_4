@@ -1,5 +1,6 @@
 package pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,12 +27,12 @@ public class OrderFlow {
         driver.findElement(cookieButton).click();
     }
 
-    // Кликнуть по кнопке по верхней кнопке Заказать
+    // Кликнуть по верхней кнопке Заказать
     public void clickUpperOrderButton() {
         driver.findElement(upperOrderButton).click();
     }
 
-    // Кликнуть по кнопке по нижней кнопке Заказать
+    // Кликнуть по нижней кнопке Заказать
     public void clickBelowOrderButton() {
         driver.findElement(belowOrderButton).click();
     }

@@ -30,7 +30,7 @@ public class AboutRentOrderFlow {
 
 
     //Модальное окно Заказ Оформлен
-    public String isModalOrderWindowDisplayed() {
+   public String isModalOrderWindowDisplayed() {
         return driver.findElement(modalOrderWindow).getText();
     }
 

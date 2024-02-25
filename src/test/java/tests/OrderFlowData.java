@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 import pages.AboutRentOrderFlow;
 import pages.ForWhomOrderFlow;
@@ -39,7 +40,7 @@ public class OrderFlowData extends DriverForTest {
 
 
         String isDisplayed = new AboutRentOrderFlow(driver).isModalOrderWindowDisplayed();
-        assertEquals("Хотите оформить заказ?\n ", isDisplayed);
+        Assert.assertTrue(isDisplayed.contains("Заказ оформлен"));
     }
 
     @Test
@@ -48,11 +49,9 @@ public class OrderFlowData extends DriverForTest {
         ImportantQuestions objImportantQuestions = new ImportantQuestions(driver);
         objImportantQuestions.scrollPageToEndOfList();
 
-
         OrderFlow objOrderFlowTest = new OrderFlow(driver);
         objOrderFlowTest.clickCookieButton();
-        objOrderFlowTest.clickUpperOrderButton();
-
+        objOrderFlowTest.clickBelowOrderButton();
 
         ForWhomOrderFlow objForWhomOrderFlow = new ForWhomOrderFlow(driver);
 
@@ -74,7 +73,7 @@ public class OrderFlowData extends DriverForTest {
         objAboutRentOrderFlow.clickOrderButtonYes();
 
         String isDisplayed = new AboutRentOrderFlow(driver).isModalOrderWindowDisplayed();
-        assertEquals("Хотите оформить заказ?\n ", isDisplayed);
+        Assert.assertTrue(isDisplayed.contains("Заказ оформлен"));
     }
 
     @Test
