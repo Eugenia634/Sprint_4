@@ -1,12 +1,10 @@
 package pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class OrderFlow {
-
-    private static WebDriver driver;
+private static WebDriver driver;
 
     // локаторы главной страницы
     // сообщение о куках

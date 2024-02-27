@@ -50,7 +50,7 @@ public class ImportantQuestions {
     }
 
     //Метод для получения текста элемента
-    public static String getText(int index){
+        public static String getText(int index){
         String question ="accordion__heading-";
         String answer = "accordion__panel-";
         new WebDriverWait(driver, Duration.of(5, ChronoUnit.SECONDS))

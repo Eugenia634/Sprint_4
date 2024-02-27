@@ -9,18 +9,19 @@ import pages.OrderFlow;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class ImportantQuestionsTest extends DriverForTest{
+public class ImportantQuestionsTest extends DriverForTest {
     private final int questionsIndex;
     private final String textAnswer;
     private final int answerIndex;
 
-    public ImportantQuestionsTest(int questions, int answer,  String text) {
+    public ImportantQuestionsTest(int questions, int answer, String text) {
         this.questionsIndex = questions;
         this.answerIndex = answer;
         this.textAnswer = text;
     }
+
     @Parameterized.Parameters
-    public static Object[][] expectedAnswersParamList() {
+    public Object[][] expectedAnswersParamList() {
         return new Object[][]{
                 {0, 0, "Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
                 {1, 1, "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."},
@@ -32,6 +33,7 @@ public class ImportantQuestionsTest extends DriverForTest{
                 {7, 7, "Да, обязательно. Всем самокатов! И Москве, и Московской области."},
         };
     }
+
     @Test
     public void dropDownListTest() {
 
@@ -42,6 +44,6 @@ public class ImportantQuestionsTest extends DriverForTest{
         objMainList.scrollPageToEndOfList();
         objMainList.clickQuestionButton(questionsIndex);
 
-        assertEquals(textAnswer,ImportantQuestions.getText(answerIndex));
+        assertEquals(textAnswer, objMainList.getText(answerIndex));
     }
 }

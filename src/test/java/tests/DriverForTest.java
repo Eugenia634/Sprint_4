@@ -14,12 +14,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverForTest {
     protected WebDriver driver;
-    public static String URL = "https://qa-scooter.praktikum-services.ru/";
+    public final String URL = "https://qa-scooter.praktikum-services.ru/";
 
     @Before
     public void setUp() {
-      //driver = new ChromeDriver();
-        driver = new FirefoxDriver();
+     // driver = new ChromeDriver();
+      driver = new FirefoxDriver();
         driver.get(URL);
     }
 
