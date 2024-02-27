@@ -74,7 +74,6 @@ public class OrderFlowDataTest extends DriverForTest {
 //        Assert.assertTrue("Текст элемента не соответствует ожидаемому", isDisplayed.contains("Хотите оформить заказ?"));
     }
 
-
     @Test
     public void orderingByBelowOrderButton() {
 
@@ -90,5 +89,6 @@ public class OrderFlowDataTest extends DriverForTest {
 
         String isDisplayed = objOrderFlowTest.orderFormCheck();
         assertEquals("Для кого самокат", isDisplayed);
+
     }
 }

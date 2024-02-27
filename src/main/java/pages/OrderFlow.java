@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class OrderFlow {
-private static WebDriver driver;
+private WebDriver driver;
 
     // локаторы главной страницы
     // сообщение о куках
@@ -17,7 +17,7 @@ private static WebDriver driver;
     private final By orderForm = By.className("Order_Header__BZXOb");
 
     public OrderFlow(WebDriver driver) {
-        OrderFlow.driver = driver;
+        this.driver = driver;
     }
 
     // Кликнуть по кнопке куки

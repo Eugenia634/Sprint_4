@@ -13,7 +13,7 @@ import java.time.temporal.ChronoUnit;
 
 public class ImportantQuestions {
 
-    private static WebDriver driver;
+    private WebDriver driver;
     private static final String[] QUESTIONS_ARRAY = new String[]{
             "accordion__heading-0",
             "accordion__heading-1",
@@ -50,11 +50,12 @@ public class ImportantQuestions {
     }
 
     //Метод для получения текста элемента
-        public static String getText(int index){
+        public String getText(int index){
         String question ="accordion__heading-";
         String answer = "accordion__panel-";
         new WebDriverWait(driver, Duration.of(5, ChronoUnit.SECONDS))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id(QUESTIONS_ARRAY[index])));
         return driver.findElement(By.id(ANSWERS_ARRAY[index])).getText();
+
     }
 }
