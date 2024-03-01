@@ -40,8 +40,8 @@ public class AboutRentOrderFlow {
 
     //Методы для работы с элементами второй страницы заказа
     //Ввод даты доставки
-    public void sendWhenPanel(String When) {
-        driver.findElement(whenPanel).sendKeys(When);
+    public void sendWhenPanel(String when) {
+        driver.findElement(whenPanel).sendKeys(when);
         driver.findElement(whenPanel).sendKeys(Keys.ENTER);
     }
 
@@ -63,8 +63,8 @@ public class AboutRentOrderFlow {
     }
 
     // Оставить комментарий
-    public void sendCommentPanel(String Comment) {
-        driver.findElement(commentPanel).sendKeys(Comment);
+    public void sendCommentPanel(String comment) {
+        driver.findElement(commentPanel).sendKeys(comment);
     }
 
     //Клик по Кнопке Заказать

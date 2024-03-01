@@ -14,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverForTest {
     protected WebDriver driver;
-    public final String URL = "https://qa-scooter.praktikum-services.ru/";
+    public final static String URL = "https://qa-scooter.praktikum-services.ru/";
 
     @Before
     public void setUp() {

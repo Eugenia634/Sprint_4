@@ -6,10 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pages.AboutRentOrderFlow;
 import pages.ForWhomOrderFlow;
-import pages.ImportantQuestions;
 import pages.OrderFlow;
-
-import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class OrderFlowDataTest extends DriverForTest {
@@ -22,7 +19,9 @@ public class OrderFlowDataTest extends DriverForTest {
     private String date;
     private String comment;
 
-    public OrderFlowDataTest(String name, String surname, String address, String metro, String phone, String date, String comment) {
+    private String buttonKind;
+
+    public OrderFlowDataTest(String name, String surname, String address, String metro, String phone, String date, String comment, String buttonKind) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -30,23 +29,25 @@ public class OrderFlowDataTest extends DriverForTest {
         this.phone = phone;
         this.date = date;
         this.comment = comment;
+        this.buttonKind = buttonKind;
     }
 
     @Parameterized.Parameters // добавили аннотацию
     public static Object[][] clientData() {
         return new Object[][] {
-                { "Инна", "Иванова", "Питер, Мира, 56", "Марьина Роща", "+79167653412", "27.03.2024", "this is comment 1"},
-                { "Игорь", "Петров", "Москва, Мира, 23", "Сокольники", "+79167653412",  "23.03.2024", "this is comment 2"},
+                { "Инна", "Иванова", "Питер, Мира, 56", "Марьина Роща", "+79167653412", "27.03.2024", "this is comment 1", "upperButton"},
+                { "Игорь", "Петров", "Москва, Мира, 23", "Сокольники", "+79167653412",  "23.03.2024", "this is comment 2", "belowButton"},
         };
     }
-
 
     @Test
     public void orderingUpperOrderButton() {
 
         OrderFlow objOrderFlow = new OrderFlow(driver);
         objOrderFlow.clickCookieButton();
-        objOrderFlow.clickUpperOrderButton();
+        if (buttonKind.equals("upperButton")){
+            objOrderFlow.clickUpperOrderButton();
+        } else objOrderFlow.clickBelowOrderButton();
 
         ForWhomOrderFlow objForWhomOrderFlow = new ForWhomOrderFlow(driver);
 
@@ -69,26 +70,8 @@ public class OrderFlowDataTest extends DriverForTest {
         objAboutRentOrderFlow.clickOrderButtonYes();
 
 
-        String isDisplayed = new AboutRentOrderFlow(driver).isModalOrderWindowDisplayed();
-        Assert.assertTrue("Текст элемента не соответствует ожидаемому", isDisplayed.contains("Заказ оформлен"));
-//        Assert.assertTrue("Текст элемента не соответствует ожидаемому", isDisplayed.contains("Хотите оформить заказ?"));
-    }
-
-    @Test
-    public void orderingByBelowOrderButton() {
-
-        ImportantQuestions objImportantQuestions = new ImportantQuestions(driver);
-        objImportantQuestions.scrollPageToEndOfList();
-
-        OrderFlow objOrderFlowTest = new OrderFlow(driver);
-        objOrderFlowTest.clickCookieButton();
-        objOrderFlowTest.clickBelowOrderButton();
-
-        // проверка появления формы заказа
-        objOrderFlowTest.orderFormCheck();
-
-        String isDisplayed = objOrderFlowTest.orderFormCheck();
-        assertEquals("Для кого самокат", isDisplayed);
-
+        String confirmationText = new AboutRentOrderFlow(driver).isModalOrderWindowDisplayed();
+        Assert.assertTrue("Текст элемента не соответствует ожидаемому", confirmationText.contains("Заказ оформлен"));
+//      Assert.assertTrue("Текст элемента не соответствует ожидаемому", confirmationText.contains("Хотите оформить заказ?"));
     }
 }
